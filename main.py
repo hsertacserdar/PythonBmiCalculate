@@ -26,7 +26,7 @@ def button_clicked():
         global info_label
         info_label.config(text="")
         try:
-            bmi = int(my_weight_entry.get())/((int(my_height_entry.get())/100)**2)
+            bmi = float(my_weight_entry.get())/((float(my_height_entry.get())/100)**2)
             if bmi >= 40:
                 info_label.config(text="You are Obesity Class III")
                 break
@@ -42,8 +42,11 @@ def button_clicked():
             elif 18.5 <= bmi <25:
                 info_label.config(text="You are Normal Weight")
                 break
-            elif  bmi < 18.5:
+            elif  0 < bmi < 18.5:
                 info_label.config(text="You are Underweight")
+                break
+            elif  bmi <= 0:
+                info_label.config(text="Enter a Valid Number!!!")
                 break
         except:
             info_label.config(text="Enter a Valid Number!!!")
